@@ -129,7 +129,7 @@ namespace Unit04.Game.Casting
         }
 
         /// <summary>
-        /// Sets the actor's text to the given value.
+        /// Sets the actor's texct to the given value.
         /// </summary>
         /// <param name="text">The given text.</param>
         /// <exception cref="ArgumentException">When text is null.</exception>
