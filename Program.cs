@@ -18,13 +18,13 @@ namespace Unit04
         private static int MAX_X = 900;
         private static int MAX_Y = 600;
         private static int CELL_SIZE = 15;
-        private static int FONT_SIZE = 15;
+        private static int FONT_SIZE = 20;
         private static int COLS = 60;
         private static int ROWS = 40;
         private static string CAPTION = "Robot Finds Kitten";
         private static string DATA_PATH = "Data/messages.txt";
         private static Color WHITE = new Color(255, 255, 255);
-        private static int DEFAULT_ARTIFACTS = 40;
+        private static int DEFAULT_ARTIFACTS = 10;
 
 
         /// <summary>
@@ -64,21 +64,29 @@ namespace Unit04
 
                 int x = random.Next(1, COLS);
                 int y = random.Next(1, ROWS);
-                Point position = new Point(x, y);
-                position = position.Scale(CELL_SIZE);
+                Point position_rock = new Point(x, y);
+                Point position_gem = new Point(x+2, y+2);
+                position_rock = position_rock.Scale(CELL_SIZE);
+                position_gem = position_gem.Scale(CELL_SIZE);
 
                 int r = random.Next(0, 256);
                 int g = random.Next(0, 256);
                 int b = random.Next(0, 256);
-                Color color = new Color(r, g, b);
+                Color color = new Color(50 ,170 ,210 );
 
-                Artifact artifact = new Artifact();
-                artifact.SetText(text);
-                artifact.SetFontSize(FONT_SIZE);
-                artifact.SetColor(color);
-                artifact.SetPosition(position);
-                artifact.SetMessage(message);
-                cast.AddActor("artifacts", artifact);
+                FallingObject rock = new FallingObject();
+                rock.SetText("O");
+                rock.SetFontSize(FONT_SIZE);
+                rock.SetColor(color);
+                rock.SetPosition(position_rock);
+                cast.AddActor("rocks", rock);
+
+                FallingObject gem = new FallingObject();
+                gem.SetText("*");
+                gem.SetFontSize(FONT_SIZE);
+                gem.SetColor(color);
+                gem.SetPosition(position_gem);
+                cast.AddActor("gems", gem);
             }
 
             // start the game
