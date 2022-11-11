@@ -24,7 +24,7 @@ namespace Unit04
         private static string CAPTION = "Robot Finds Kitten";
         private static string DATA_PATH = "Data/messages.txt";
         private static Color WHITE = new Color(255, 255, 255);
-        private static int DEFAULT_ARTIFACTS = 10;
+        private static int DEFAULT_ARTIFACTS = 100;
 
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Unit04
             robot.SetText("#");
             robot.SetFontSize(FONT_SIZE);
             robot.SetColor(WHITE);
-            robot.SetPosition(new Point(MAX_X / 2, MAX_Y / 2));
+            robot.SetPosition(new Point(MAX_X / 2, MAX_Y / -20));
             cast.AddActor("robot", robot);
 
             // load the messages
@@ -64,29 +64,32 @@ namespace Unit04
 
                 int x = random.Next(1, COLS);
                 int y = random.Next(1, ROWS);
-                Point position_rock = new Point(x, y);
-                Point position_gem = new Point(x+2, y+2);
-                position_rock = position_rock.Scale(CELL_SIZE);
-                position_gem = position_gem.Scale(CELL_SIZE);
 
                 int r = random.Next(0, 256);
                 int g = random.Next(0, 256);
                 int b = random.Next(0, 256);
-                Color color = new Color(50 ,170 ,210 );
-
-                FallingObject rock = new FallingObject();
-                rock.SetText("O");
-                rock.SetFontSize(FONT_SIZE);
-                rock.SetColor(color);
-                rock.SetPosition(position_rock);
-                cast.AddActor("rocks", rock);
-
-                FallingObject gem = new FallingObject();
-                gem.SetText("*");
-                gem.SetFontSize(FONT_SIZE);
-                gem.SetColor(color);
-                gem.SetPosition(position_gem);
-                cast.AddActor("gems", gem);
+                Color rockColor = new Color(50 ,90 ,150 );
+                Color gemColor = new Color(50 ,170 ,210 );
+                for(int rockCount = 0; rockCount <= 5; rockCount++){
+                    Point position_rock = new Point(x*rockCount, 4);
+                    position_rock = position_rock.Scale(CELL_SIZE);
+                    FallingObject rock = new FallingObject(-5);
+                    rock.SetText("O");
+                    rock.SetFontSize(FONT_SIZE);
+                    rock.SetColor(rockColor);
+                    rock.SetPosition(position_rock);
+                    cast.AddActor("rocks", rock);
+                }
+                for(int gemCount = 0; gemCount <= 5; gemCount++){
+                    FallingObject gem = new FallingObject(10);
+                    Point position_gem = new Point(x+3*gemCount, 5);
+                    position_gem = position_gem.Scale(CELL_SIZE);
+                    gem.SetText("*");
+                    gem.SetFontSize(FONT_SIZE);
+                    gem.SetColor(gemColor);
+                    gem.SetPosition(position_gem);
+                    cast.AddActor("gems", gem);
+                }
             }
 
             // start the game
