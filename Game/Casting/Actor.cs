@@ -79,9 +79,19 @@ namespace Unit04.Game.Casting
         /// <param name="maxY">The maximum y value.</param>
         public void MoveNext(int maxX, int maxY)
         {
-            int x = ((_position.GetX() + _velocity.GetX()) + maxX) % maxX;
-            int y = ((_position.GetY() + _velocity.GetY()) + maxY) % maxY;
-            _position = new Point(x, y);
+            // if (robot == true)
+            // {
+            //  int x = ((_position.GetX() + _velocity.GetX()) + maxX) % maxX;
+            //  int y = maxY - 40;
+            //  _position = new Point(x, y);
+
+            // } else{
+
+             int x = ((_position.GetX() + _velocity.GetX()) + maxX) % maxX;
+             int y = ((_position.GetY() + _velocity.GetY()) + maxY) % maxY;
+             _position = new Point(x, y);
+
+            
         }
 
         /// <summary>

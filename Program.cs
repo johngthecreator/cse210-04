@@ -24,7 +24,7 @@ namespace Unit04
         private static string CAPTION = "Robot Finds Kitten";
         private static string DATA_PATH = "Data/messages.txt";
         private static Color WHITE = new Color(255, 255, 255);
-        private static int DEFAULT_ARTIFACTS = 100;
+        private static int DEFAULT_ARTIFACTS = 20;
 
 
         /// <summary>
@@ -49,11 +49,7 @@ namespace Unit04
             robot.SetText("#");
             robot.SetFontSize(FONT_SIZE);
             robot.SetColor(WHITE);
-<<<<<<< HEAD
-            robot.SetPosition(new Point(MAX_X / 2, 500));
-=======
-            robot.SetPosition(new Point(MAX_X / 2, MAX_Y / -20));
->>>>>>> 3d44e771cb127851ad72d4a64e09e52297470a0b
+            robot.SetPosition(new Point(MAX_X / 2, MAX_Y / -40));
             cast.AddActor("robot", robot);
 
             // load the messages
